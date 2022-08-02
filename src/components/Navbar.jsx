@@ -29,20 +29,20 @@ const Navbar = () => {
     const handleResize = () => {
       setScreenSize(window.innerWidth);
       console.log(window.innerWidth);
-      window.addEventListener('resize', handleResize);
-      handleResize();
-
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      }
     }
-  }, [screenSize]);
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    }
+  }, []);
   
-  // console.log(screenSize);
+  console.log(screenSize);
   useEffect(() => {
+    
     if (screenSize <= 900) {
       setActiveMenu(false);
-      alert('Please use a laptop or desktop to use this app');
     }
     else {
       setActiveMenu(true);
