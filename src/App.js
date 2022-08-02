@@ -6,10 +6,11 @@ import { Navbar, Sidebar, Footer, ThemeSettings } from './components';
 import { Ecommerce, Orders, Employees, Customers, Kanban, Calendar, Editor, ColorPicker, Line, Area, Bar, Pie, Financial, ColorMapping, Pyramid, Stacked } from './pages';
 
 import './App.css';
+import { useContextState } from './contexts/ContextProvider';
 
 
 const App = () => {
-    const activeMenu = true;
+    const {activeMenu} = useContextState(); // useContextState() is a custom hook
     return (
         <div>
             <BrowserRouter>
