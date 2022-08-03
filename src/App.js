@@ -10,14 +10,14 @@ import { useContextState } from './contexts/ContextProvider';
 
 
 const App = () => {
-    const {activeMenu} = useContextState(); // useContextState() is a custom hook
+    const {activeMenu, themeSettings, setThemeSettings, currentColor, currentMode} = useContextState(); // useContextState() is a custom hook
     return (
-        <div>
+        <div className={currentMode === 'Dark' ? 'dark' : ''}>
             <BrowserRouter>
                 <div className="flex relative dark:bg-main-dark-bg">
                     <div className="fixed right-4 bottom-4" style={{zindex:`1000`}}>
                         <TooltipComponent content="Settings" position="top">
-                            <button type='button' className='text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white' style={{background:`blue`,borderRadius:`50%` }}>
+                            <button onClick={()=> setThemeSettings(true)} type='button' className='text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white' style={{background:currentColor,borderRadius:`50%` }}>
                                 <FiSettings />
                             </button>
                         </TooltipComponent>
@@ -32,12 +32,18 @@ const App = () => {
                                 <Sidebar/>
                         </div>
                     )}
-                    <div className={`dark:bg-main-bg bg-main-bg min-h-screen w-full ${activeMenu ? 'md:ml-72' : 'flex-2'}`}>
+                    <div className={`dark:bg-main-dark-bg bg-main-bg min-h-screen w-full 
+                    ${activeMenu
+                        ? 'md:ml-72' : 
+                        
+                            'flex-2'}`
+                            }>
                         <div className='fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full'>
                             <Navbar />
                         </div>
                         <div>
-                        <ThemeSettings />
+                       {themeSettings && <ThemeSettings />}
+                        
 
                             <Routes>
                                 {/* Dashboard */}

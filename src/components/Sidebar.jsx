@@ -7,7 +7,7 @@ import { links } from '../data/dummy';
 import { useContextState } from '../contexts/ContextProvider';
 
 const Sidebar = () => {
-  const { activeMenu, setActiveMenu , screenSize} = useContextState();
+  const { activeMenu, setActiveMenu, screenSize, currentColor } = useContextState();
   const activeLink ='flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-white text-md m-2';
   const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2 text-md  text-gray-700'; 
   const handleCloseSidebar = () => {
@@ -41,6 +41,10 @@ const Sidebar = () => {
               to={`/${link.name}`}
               key={link.name}
               onClick={handleCloseSidebar}
+                style={({ isActive }) => ({
+                  backgroundColor: isActive ? currentColor : '',
+                })
+                }
               className={({isActive})=> (isActive ? activeLink : normalLink)}
               >
               {link.icon}
