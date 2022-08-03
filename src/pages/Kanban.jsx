@@ -1,5 +1,5 @@
 import React from 'react';
-import { KanbanComponent, KanbanList, KanbanCard, ColumnDirective, ColumnsDirective } from '@syncfusion/ej2-react-kanban';
+import { KanbanComponent, ColumnDirective, ColumnsDirective } from '@syncfusion/ej2-react-kanban';
 import { kanbanData, kanbanGrid } from '../data/dummy';
 import { Header } from '../components';
 
